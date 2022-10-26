@@ -104,6 +104,11 @@ li {
     overflow: hidden;
 }
 
+.missions {
+    max-width: 90%;
+    margin: auto;
+}
+
 @media (min-width: 1200px) {
     .container {
         max-width: 1200px;
@@ -2112,8 +2117,8 @@ li {
 .feature-one__icon-wrap {
     display: flex;
     align-items: center;
+    justify-content: center;
     margin-bottom: 35px;
-    padding-left: 30px;
 }
 
 .feature-one__icon-box {
@@ -2160,17 +2165,20 @@ li {
 }
 
 .feature-one__icon-text-box {
-    margin-left: 60px;
+    text-align: center;
 }
 
 .feature-one__icon-text-box h4 {
-    font-size: 20px;
+    font-size: 22x;
     line-height: 30px;
     font-family: var(--thm-font);
     font-weight: 500;
+    margin-bottom: 10px;
+    text-transform: uppercase;
 }
 
 .feature-one__icons-single-text {
+    text-align: justify;
     margin: 0;
 }
 

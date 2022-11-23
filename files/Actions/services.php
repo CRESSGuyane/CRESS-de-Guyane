@@ -6,7 +6,7 @@ function getStructures(){
             $curl = curl_init();
 
             curl_setopt_array($curl, array(
-            CURLOPT_URL => 'http://localhost:8055/items/fiches_entreprises',
+            CURLOPT_URL => 'http://137.74.196.180:8055/items/fiches_entreprises',
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
@@ -17,9 +17,15 @@ function getStructures(){
             ));
 
             $response = json_decode(curl_exec($curl),true) ;
-
+            
             curl_close($curl);
-            return $response['data'];
+            if(!isset($response['data'])){
+                return [];
+            }else{
+                return $response['data'];
+                
+            }
+            
             
 }
 function getStatuts(){
@@ -28,7 +34,7 @@ function getStatuts(){
     $curl = curl_init();
 
     curl_setopt_array($curl, array(
-    CURLOPT_URL => 'http://localhost:8055/items/statuts_juridiques',
+    CURLOPT_URL => 'http://137.74.196.180:8055/items/statuts_juridiques',
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING => '',
     CURLOPT_MAXREDIRS => 10,
@@ -41,7 +47,12 @@ function getStatuts(){
     $response = json_decode(curl_exec($curl),true) ;
 
     curl_close($curl);
-    return $response['data'];
+    if(!isset($response['data'])){
+        return [];
+    }else{
+        return $response['data'];
+        
+    }
     
 }
 function getDomaines(){
@@ -50,7 +61,7 @@ function getDomaines(){
     $curl = curl_init();
 
     curl_setopt_array($curl, array(
-    CURLOPT_URL => 'http://localhost:8055/items/domaines_activites',
+    CURLOPT_URL => 'http://137.74.196.180:8055/items/domaines_activites',
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING => '',
     CURLOPT_MAXREDIRS => 10,
@@ -63,7 +74,12 @@ function getDomaines(){
     $response = json_decode(curl_exec($curl),true) ;
 
     curl_close($curl);
-    return $response['data'];
+    if(!isset($response['data'])){
+        return [];
+    }else{
+        return $response['data'];
+        
+    }
     
 }
 
@@ -73,7 +89,7 @@ function getStructure($id){
     $curl = curl_init();
 
     curl_setopt_array($curl, array(
-    CURLOPT_URL => "http://localhost:8055/items/fiches_entreprises/$id",
+    CURLOPT_URL => "http://137.74.196.180:8055/items/fiches_entreprises/$id",
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING => '',
     CURLOPT_MAXREDIRS => 10,
@@ -96,7 +112,7 @@ function getDescription($description_structure){
     $curl = curl_init();
 
     curl_setopt_array($curl, array(
-    CURLOPT_URL => "http://localhost:8055/items/fiches_entreprises/$description_structure",
+    CURLOPT_URL => "http://137.74.196.180:8055/items/fiches_entreprises/$description_structure",
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING => '',
     CURLOPT_MAXREDIRS => 10,
@@ -112,12 +128,12 @@ function getDescription($description_structure){
     return $response['data'];
     
 }
-function filtres($statutId=null,$domaineId=null,$query=null){
-    if((!$statutId || $statutId == "")&&(!$query || $query =="")&&(!$domaineId || $domaineId == "")){
+function filtres($statutId=null,$domaineId=null,$communesId=null,$query=null){
+    if((!$statutId || $statutId == "")&&(!$query || $query =="")&&(!$domaineId || $domaineId == "")&&(!$communesId || $communesId == "")){
         $curl = curl_init();
 
 curl_setopt_array($curl, array(
-        CURLOPT_URL => "http://localhost:8055/items/fiches_entreprises",
+        CURLOPT_URL => "http://137.74.196.180:8055/items/fiches_entreprises",
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => '',
         CURLOPT_MAXREDIRS => 10,
@@ -164,7 +180,7 @@ curl_setopt_array($curl, array(
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => "http://localhost:8055/items/fiches_entreprises?$argStatut$argDomaine$argQuery",
+  CURLOPT_URL => "http://137.74.196.180:8055/items/fiches_entreprises?$argStatut$argDomaine$argQuery",
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => '',
   CURLOPT_MAXREDIRS => 10,

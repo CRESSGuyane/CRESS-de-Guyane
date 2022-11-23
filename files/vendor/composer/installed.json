@@ -1,0 +1,56 @@
+{
+    "packages": [
+        {
+            "name": "hansschouten/phpagebuilder",
+            "version": "v0.22.0",
+            "version_normalized": "0.22.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/HansSchouten/PHPageBuilder.git",
+                "reference": "1384bb8d8692b776d3a36c1b3081fd4d6c10822e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/HansSchouten/PHPageBuilder/zipball/1384bb8d8692b776d3a36c1b3081fd4d6c10822e",
+                "reference": "1384bb8d8692b776d3a36c1b3081fd4d6c10822e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "time": "2022-08-02T13:44:48+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "files": [
+                    "src/Core/helpers.php"
+                ],
+                "psr-4": {
+                    "PHPageBuilder\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Hans Schouten",
+                    "email": "hans@falcosolutions.nl"
+                }
+            ],
+            "description": "A drag and drop pagebuilder to manage pages in any PHP project.",
+            "homepage": "https://github.com/HansSchouten/PHPagebuilder",
+            "keywords": [
+                "pagebuilder"
+            ],
+            "support": {
+                "issues": "https://github.com/HansSchouten/PHPageBuilder/issues",
+                "source": "https://github.com/HansSchouten/PHPageBuilder/tree/v0.22.0"
+            },
+            "install-path": "../hansschouten/phpagebuilder"
+        }
+    ],
+    "dev": true,
+    "dev-package-names": []
+}

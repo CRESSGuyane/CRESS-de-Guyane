@@ -85,6 +85,10 @@
     -webkit-font-smoothing: antialiased;
   }
 
+  html, body {
+    height: 100%;
+}
+
   h1 {
     font-size: 22px;
     margin: 0;
@@ -122,12 +126,35 @@
     bottom: 0;
   }
 
+  #map{
+
+  }
+
   .heading {
     background: #fff;
     border-bottom: 1px solid #eee;
     height: 60px;
     line-height: 60px;
     padding: 0 10px;
+  }
+
+
+  .map-info{
+    height: 320px;
+  }
+  
+  .item{
+    border: 1px solid #cbcbcb59;
+    padding: 15px;
+    margin: 15px;
+    border-radius: 6px;
+    background-color: white;
+    box-shadow: 0px 4px 12px -3px #363636ab;
+  }
+
+  .listings-container{
+    height: 519px;
+    overflow-x: scroll;
   }
 </style>  
 </head>
@@ -326,26 +353,25 @@
 
         <!--Event Page Start-->
         <section class="event-page">
-            
-            <div class="container">
-           
-           
-            
-              
+            <div class="container map-info">
                 <div class='sidebar'>
-  <div class='heading'>
-    <h1>Structure de l'ESS en Guyane</h1>
-  </div>
-  <div id='listings' class='listings'></div>
-</div>
-<div id="map" class="map"></div>
+                    <div class='heading'>
+                        <h1>Structure de l'ESS en Guyane</h1>
+                    </div>
+                    <div class="listings-container">
+                        <div id='listings' class='listings'></div>
+                    </div>
+                </div>
+
+                <div id="map" class="map"></div>
                 <!-- /.text-center -->
             </div>
         </section>
         <!--Event Page End-->
 
        <!--Site Footer One Start-->
-       <footer class="site-footer" style="background-image: url(assets/images/backgrounds/cress-site_footer_bg.png)">
+        <footer class="site-footer" style="background-image: url(assets/images/backgrounds/cress-site_footer_bg.png)">
+
         <div class="container">
             <div class="site-footer__one-top">
                 <div class="row">
@@ -426,99 +452,87 @@
                 </div>
             </div>
         </div>
-    </footer>
-    <!--Site Footer One End-->
+        </footer>
+        <!--Site Footer One End-->
 
-    <!--Site Footer Bottom Start-->
-    <div class="site-footer-bottom">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="site-footer-bottom__inner">
-                        <div class="site-footer-bottom__left">
-                            <p>© 2022 CRESS-Guyane. Tous droits réservés - Conçu avec <i class="fa fa-heart text-danger"></i> par Anansi Writes & Andréna Solution<!--<a href="http://www.anansi-writes.com/">Anansi Writes--></a></p>
+        <!--Site Footer Bottom Start-->
+        <div class="site-footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="site-footer-bottom__inner">
+                            <div class="site-footer-bottom__left">
+                                <p>© 2022 CRESS-Guyane. Tous droits réservés - Conçu avec <i class="fa fa-heart text-danger"></i> par Anansi Writes & Andréna Solution<!--<a href="http://www.anansi-writes.com/">Anansi Writes--></a></p>
+                            </div>
+                            <ul class="site-footer-bottom__menu list-unstyled">
+                                <li><a href="#">Politique de confidentialité</a></li>
+                                <li><span>/</span></li>
+                                <li><a href="#">CGU</a></li>
+                            </ul>
                         </div>
-                        <ul class="site-footer-bottom__menu list-unstyled">
-                            <li><a href="#">Politique de confidentialité</a></li>
-                            <li><span>/</span></li>
-                            <li><a href="#">CGU</a></li>
-                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!--Site Footer Bottom End-->
+        <!--Site Footer Bottom End-->
+
+        </div><!-- /.page-wrapper -->
+
+        <a href="#" data-target="html" class="scroll-to-target scroll-to-top"><i class="fa fa-angle-up"></i></a>
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-    </div><!-- /.page-wrapper -->
-
-    <a href="#" data-target="html" class="scroll-to-target scroll-to-top"><i class="fa fa-angle-up"></i></a>
-
-
-
-
-    <div class="mobile-nav__wrapper">
-        <div class="mobile-nav__overlay side-menu__toggler mobile-nav__toggler"></div>
-        <div class="mobile-nav__content">
-            <span class="mobile-nav__close side-menu__toggler mobile-nav__toggler">
-                <i class="fa fa-times"></i>
-            </span>
-            <div class="logo-box">
-                <a href="index.html" aria-label="logo image">
-                    <img src="assets/images/resources/logo-2.png" alt="" />
-                </a>
+        <div class="mobile-nav__wrapper">
+            <div class="mobile-nav__overlay side-menu__toggler mobile-nav__toggler"></div>
+            <div class="mobile-nav__content">
+                <span class="mobile-nav__close side-menu__toggler mobile-nav__toggler">
+                    <i class="fa fa-times"></i>
+                </span>
+                <div class="logo-box">
+                    <a href="index.html" aria-label="logo image">
+                        <img src="assets/images/resources/logo-2.png" alt="" />
+                    </a>
+                </div>
+                <!-- /.logo-box -->
+                <div class="mobile-nav__container clearfix"></div>
+                <!-- /.mobile-nav__container -->
+                <ul class="mobile-nav__contact list-unstyled">
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:contact@cress-guyane.org">contact@cress-guyane.org</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone-square-alt"></i>
+                        <a href="tel:0594 20 76 70">0594 20 76 70</a>
+                    </li>
+                </ul><!-- /.mobile-nav__contact -->
+                <div class="mobile-nav__top">
+                    <div class="mobile-nav__social">
+                        <a href="#" aria-label="twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="facebook"><i class="fab fa-facebook-square"></i></a>
+                        <a href="#" aria-label="pinterest"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="instagram"><i class="fab fa-instagram"></i></a>
+                    </div><!-- /.mobile-nav__social -->
+                </div><!-- /.mobile-nav__top -->
             </div>
-            <!-- /.logo-box -->
-            <div class="mobile-nav__container clearfix"></div>
-            <!-- /.mobile-nav__container -->
-            <ul class="mobile-nav__contact list-unstyled">
-                <li>
-                    <i class="fas fa-envelope"></i>
-                    <a href="mailto:contact@cress-guyane.org">contact@cress-guyane.org</a>
-                </li>
-                <li>
-                    <i class="fas fa-phone-square-alt"></i>
-                    <a href="tel:0594 20 76 70">0594 20 76 70</a>
-                </li>
-            </ul><!-- /.mobile-nav__contact -->
-            <div class="mobile-nav__top">
-                <div class="mobile-nav__social">
-                    <a href="#" aria-label="twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="#" aria-label="facebook"><i class="fab fa-facebook-square"></i></a>
-                    <a href="#" aria-label="pinterest"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" aria-label="instagram"><i class="fab fa-instagram"></i></a>
-                </div><!-- /.mobile-nav__social -->
-            </div><!-- /.mobile-nav__top -->
         </div>
-    </div>
 
 
 
-    <div class="search-popup">
-        <div class="search-popup__overlay custom-cursor__overlay">
-            <div class="cursor"></div>
-            <div class="cursor-follower"></div>
-        </div><!-- /.search-popup__overlay -->
-        <div class="search-popup__inner">
-            <form action="#" class="search-popup__form">
-                <input type="text" name="search" placeholder="Tapez pour rechercher...">
-                <button type="submit"><i class="fa fa-search"></i></button>
-            </form>
+        <div class="search-popup">
+            <div class="search-popup__overlay custom-cursor__overlay">
+                <div class="cursor"></div>
+                <div class="cursor-follower"></div>
+            </div><!-- /.search-popup__overlay -->
+            <div class="search-popup__inner">
+                <form action="#" class="search-popup__form">
+                    <input type="text" name="search" placeholder="Tapez pour rechercher...">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
         </div>
+
     </div>
 
 
@@ -548,6 +562,12 @@
     <script src="assets/js/map.js"></script>
     <!-- template scripts -->
     <script src="assets/js/theme.js"></script>
+
+    <script>
+        map.on('idle',function(){
+            map.resize()
+        })
+    </script>
 
 
 </body>

@@ -246,7 +246,8 @@ async function test() {
 
     const map = L.mapbox
     .map('map')
-    .setView([-52.336403, 4.936807], 16)
+    // lng":-52.323980689627035,"lat":4.938287272510209
+    .setView([4.938287272510209, -52.323980689627035], 16)
     .addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v12'));
 
     map.scrollWheelZoom.disable();
@@ -271,7 +272,9 @@ async function test() {
     const prop = locale.feature.properties;
 
     // Each marker on the map.
-    let popup = `<h3>Sweetgreen</h3><div>${prop.address}`;
+    let popup = `
+    <h3>${prop.nom_structure}</h3>
+    <div>${prop.adresse_siege}</div>`;
 
     const listing = listings.appendChild(document.createElement('div'));
     listing.className = 'item';
@@ -282,13 +285,18 @@ async function test() {
 
     link.innerHTML = `${prop.nom_structure}`;
     if (prop.sigle_structure) {
-        link.innerHTML += `<br /><small class="quiet">${prop.sigle_structure}</small>
+        link.innerHTML += `<br /><small class="badge badge-primary quiet">${prop.sigle_structure}</small>
         <br /><small class="quiet">Siege ${prop.adresse_siege}</small>
         `;
-        popup += `<br /><small class="quiet">${prop.crossStreet}</small>`;
+        popup += `<br /><small class="quiet">${prop.nom_structure} dfgdf</small>`;
     }
 
     const details = listing.appendChild(document.createElement('div'));
+    details.innerHTML = `${prop.city}`;
+    if (prop.phone) {
+        details.innerHTML += ` Site web: ${prop.website_structure}`;
+    }
+
     details.innerHTML = `${prop.city}`;
     if (prop.phone) {
         details.innerHTML += ` &middot; sdfsd ${prop.phoneFormatted}`;

@@ -65,6 +65,12 @@ if(str_contains($request, '/structure?id=')){
         case '/nos-missions' :
             require __DIR__ . '/views/nos-missions.php';
             break;
+        case '/login' :
+            require __DIR__ . '/views/login.php';
+            break;
+        case '/dashboard' :
+            require __DIR__ . '/views/dashboard.php';
+            break;
         
         default:
             http_response_code(404);

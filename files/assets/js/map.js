@@ -206,7 +206,7 @@ const geojson = [{
 
 async function test() {
     let tt = await $.ajax({
-        url: 'http://137.74.196.180:8055/items/fiches_entreprises/?filter[coordonnees][_ncontains]=null',
+        url: 'http://137.74.196.180:8055/items/fiches_entreprises/?fields=*,*.*.*&filter[coordonnees][_ncontains]=null',
         type: 'GET',
         success: function (data) {
             
@@ -285,10 +285,16 @@ async function test() {
 
     link.innerHTML = `${prop.nom_structure}`;
     if (prop.sigle_structure) {
-        link.innerHTML += `<br /><small class="badge badge-primary quiet">${prop.sigle_structure}</small>
-        <br /><small class="quiet">Siege ${prop.adresse_siege}</small>
+        link.innerHTML += `
+        <br /><small class="badge badge-primary quiet">${prop.statut_juridique_structure.statut}</small>
         `;
         popup += `<br /><small class="quiet">${prop.nom_structure} dfgdf</small>`;
+    }
+
+    if (prop.sigle_structure) {
+        // link.innerHTML += `
+        // <br /><small class="badge badge-primary quiet">${prop.statut_juridique_structure.statut}</small>
+        // `;
     }
 
     const details = listing.appendChild(document.createElement('div'));

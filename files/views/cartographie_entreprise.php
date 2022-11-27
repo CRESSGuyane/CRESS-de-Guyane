@@ -564,9 +564,7 @@
     <script src="assets/js/theme.js"></script>
 
     <script>
-        map.on('idle',function(){
-            map.resize()
-        })
+        
     </script>
 
 

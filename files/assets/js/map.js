@@ -203,196 +203,69 @@ const geojson = [{
     ]
 }];
 
-let data = [
-    {
-        'type': 'Feature',
-        'geometry': {
-            'type': 'Point',
-            'coordinates': [-77.10853099823, 38.880100922392]
-        },
-        'properties': {
-            'phoneFormatted': '(703) 522-2016',
-            'phone': '7035222016',
-            'address': '4075 Wilson Blvd',
-            'city': 'Arlington',
-            'country': 'United States',
-            'crossStreet': 'at N Randolph St.',
-            'postalCode': '22203',
-            'tt': 'VA'
-        }
-    },
-]
 
-const a = [{
-    'type': 'FeatureCollection',
-    'features': []
-}];
-
-$(document).ready(function () {
-    $.ajax({
-        url: 'http://137.74.196.180:8055/items/fiches_entreprises/',
+async function test() {
+    let tt = await $.ajax({
+        url: 'http://137.74.196.180:8055/items/fiches_entreprises/?filter[coordonnees][_ncontains]=null',
         type: 'GET',
         success: function (data) {
-            // data = JSON.parse(data)
-            console.log(data)
-            data = data.data
-
-            data.forEach(item => {
-                a.feature.push(
-                    {
-                        'type': 'Feature',
-                        'geometry': {
-                            'type': 'Point',
-                            'coordinates': [-77.10853099823, 38.880100922392]
-                        },
-                        'properties': item
-                    }  
-                )
-            });
+            
         }
+    }).then(function (data) {
+
+        
+        data = data.data
+        // console.log(data)
+        let data_maped = [{
+            type: 'FeatureCollection',
+            features: []
+        }];
+
+        
+        for (const index in data) {
+            // data[index].coordonnees = JSON.parse(data[index].coordonnees);
+            if(data[index] == null){
+                console.log('tay be izany le')
+            }
+            data_maped[0].features.push(
+                {
+                    type: 'Feature',
+                    geometry: {
+                        type: 'Point',
+                        coordinates: JSON.parse(data[index].coordonnees)
+                    },
+                    properties: data[index]
+                }  
+            )
+        }
+
+        return data_maped
     })
 
-    // console.log(a)
-})
+    console.log(tt)
 
-
-
-
-
-// [
-//     {
-//         "id": 1,
-//         "sigle_structure": null,
-//         "nom_structure": "Herphie Service",
-//         "interlocuteur_structure": "Alexandre HERLOUNE",
-//         "poste_interlocuteur": "Responsable",
-//         "email_interlocuteur": "herlounealexandre746@gmail.com ",
-//         "adresse_siege": "Résidence Novapark 3 - Bât. J - 97300 Cayenne",
-//         "tel_interlocuteur": "0694917737",
-//         "website_structure": null,
-//         "social_media_structure": null,
-//         "statut_juridique_structure": 5,
-//         "effectif": 1,
-//         "description_structure": "<p>Service &agrave; la personne consistant &agrave; l'aide au quotidien de familles en situation de fragilit&eacute;</p>",
-//         "logo_structure": null,
-//         "membre_cress": true,
-//         "adherent_cress": true,
-//         "partner_cress": true,
-//         "domaine_activite_structure": [
-//             1,
-//             2
-//         ],
-//         "epci_structure": [
-//             1
-//         ],
-//         "volet_intervention_structure": [
-//             1
-//         ],
-//         "commune_intervention_structure": [
-//             1
-//         ]
-//     },
-//     {
-//         "id": 2,
-//         "sigle_structure": null,
-//         "nom_structure": "Coorace Guyane",
-//         "interlocuteur_structure": "Frédérique MADELAINE",
-//         "poste_interlocuteur": null,
-//         "email_interlocuteur": null,
-//         "adresse_siege": "1, rue du Docteur Barrat - 97300 Cayenne",
-//         "tel_interlocuteur": "0694260284",
-//         "website_structure": "insertion-guyane.com",
-//         "social_media_structure": [
-//             {}
-//         ],
-//         "statut_juridique_structure": 1,
-//         "effectif": null,
-//         "description_structure": "<p>Coorace Guyane a &eacute;t&eacute; cr&eacute;&eacute;e le mercredi 22 d&eacute;cembre dernier lors de son Assembl&eacute;e G&eacute;n&eacute;rale&nbsp;constitutive.</p>\n<p>Apr&egrave;s la cr&eacute;ation de Coorace Guadeloupe en mai dernier, cela marque le dynamisme du r&eacute;seau dans les Outre-Mer, fix&eacute; comme une priorit&eacute; par le Conseil d'administration du r&eacute;seau d&egrave;s&nbsp;2018.</p>\n<p>Coorace Guyane devient la 14&egrave;me d&eacute;l&eacute;gation r&eacute;gionale de la F&eacute;d&eacute;ration&nbsp;Coorace.</p>\n<p>Depuis 2018, Coorace a amorc&eacute; diff&eacute;rents travaux en Guyane. La r&eacute;alisation d&rsquo;un diagnostic du champ de l&rsquo;Insertion par l&rsquo;activit&eacute; &eacute;conomique (<span class=\"caps\">IAE</span>) sur le territoire (&eacute;tudes, interviews, &eacute;tats des lieux) a permis d&rsquo;amorcer un certain nombre d&rsquo;actions de professionnalisation. Ainsi, une offre de services sur-mesure pour r&eacute;pondre aux besoins des entreprises d&rsquo;utilit&eacute; sociale guyanaises a d&eacute;j&agrave; &eacute;t&eacute; mise en &oelig;uvre sur le territoire&nbsp;:</p>\n<p>✓ accompagnements divers &agrave; la professionnalisation et &agrave; la structuration, notamment &agrave; la structuration d&rsquo;un Groupe &eacute;conomique solidaire (<span class=\"caps\">GES</span>), aux th&eacute;matiques de la d&eacute;marche qualit&eacute;, aux m&eacute;thodologies d&rsquo;accompagnement&nbsp;socio-professionnel&hellip;</p>\n<p>✓ d&eacute;veloppement des comp&eacute;tences des&nbsp;<span class=\"caps\">SIAE</span>, avec la mise en &oelig;uvre de formations diverses destin&eacute;es aux salari&eacute;s permanents de l&rsquo;<span class=\"caps\">IAE</span>,</p>\n<p>✓ amor&ccedil;age d&rsquo;actions de mise en r&eacute;seau des&nbsp;acteurs,</p>\n<p>✓ communication g&eacute;n&eacute;rale des&nbsp;<span class=\"caps\">SIAE</span>&nbsp;via notamment l&rsquo;animation du portail de l&rsquo;insertion en Guyane :&nbsp;<a class=\"ext\" href=\"http://www.insertion-guyane.com/\" target=\"_blank\" rel=\"noopener\">http://www.insertion-guyane.com/</a></p>\n<p>La volont&eacute; du Conseil d&rsquo;administration et des acteurs a &eacute;t&eacute; de renforcer l&rsquo;ind&eacute;pendance de Coorace en Guyane en autonomisant ses&nbsp;actions.</p>\n<p>Ainsi, la cr&eacute;ation de Coorace Guyane permet de cr&eacute;er un r&eacute;el collectif, acteur et garant de la mise en &oelig;uvre des actions&nbsp;localement.</p>",
-//         "logo_structure": null,
-//         "membre_cress": null,
-//         "adherent_cress": null,
-//         "partner_cress": null,
-//         "domaine_activite_structure": [
-//             3
-//         ],
-//         "epci_structure": [
-//             2
-//         ],
-//         "volet_intervention_structure": [
-//             2,
-//             3,
-//             4
-//         ],
-//         "commune_intervention_structure": [
-//             2
-//         ]
-//     },
-//     {
-//         "id": 3,
-//         "sigle_structure": null,
-//         "nom_structure": "Ne Plus Jeter",
-//         "interlocuteur_structure": "Mme LAMBLIN",
-//         "poste_interlocuteur": null,
-//         "email_interlocuteur": "neplusjeter@gmail.com",
-//         "adresse_siege": "8 av. de la Liberté - 97300 Cayenne",
-//         "tel_interlocuteur": "0694421314",
-//         "website_structure": "https://neplusjeter.com/",
-//         "social_media_structure": null,
-//         "statut_juridique_structure": 1,
-//         "effectif": null,
-//         "description_structure": "<p>Ne Plus Jeter est un acteur du recyclage, de l'&eacute;conomie circulaire et de l'&eacute;ducation populaire au d&eacute;veloppement durable et &agrave; l'environnement en Guyane. Gr&acirc;ce &agrave; son atelier chantier d'insertion elle propose dans sa boutique des biens issus de l'&eacute;conomie circulaire &agrave; prix social et sensibilise la population Guyanaise &agrave; moins jeter.</p>",
-//         "logo_structure": null,
-//         "membre_cress": null,
-//         "adherent_cress": null,
-//         "partner_cress": null,
-//         "domaine_activite_structure": [
-//             4,
-//             5,
-//             6
-//         ],
-//         "epci_structure": [
-//             3,
-//             4
-//         ],
-//         "volet_intervention_structure": [
-//             5,
-//             6,
-//             7,
-//             8,
-//             9,
-//             10,
-//             11
-//         ],
-//         "commune_intervention_structure": [
-//             3
-//         ]
-//     },
-
-// ]
-
-
-const map = L.mapbox
+    const map = L.mapbox
     .map('map')
-    .setView([38.909671288923, -77.034084142948], 16)
+    .setView([-52.336403, 4.936807], 16)
     .addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v12'));
 
-map.scrollWheelZoom.disable();
+    map.scrollWheelZoom.disable();
 
-const listings = document.getElementById('listings');
-const locations = L.mapbox.featureLayer().addTo(map);
+    const listings = document.getElementById('listings');
+    let locations = L.mapbox.featureLayer().addTo(map);
 
-locations.setGeoJSON(a);
+    locations.setGeoJSON(tt);
 
-function setActive(el) {
+    function setActive(el) {
     const siblings = listings.getElementsByTagName('div');
     for (const sibling of siblings) {
         sibling.classList.remove('active');
     }
 
     el.classList.add('active');
-}
+    }
 
-locations.eachLayer((locale) => {
+    locations.eachLayer((locale) => {
     // Shorten locale.feature.properties to just `prop` so we're not
     // writing this long form over and over again.
     const prop = locale.feature.properties;
@@ -407,9 +280,11 @@ locations.eachLayer((locale) => {
     link.href = '#';
     link.className = 'title';
 
-    link.innerHTML = `${prop.address}`;
-    if (prop.crossStreet) {
-        link.innerHTML += `<br /><small class="quiet">${prop.crossStreet}</small>`;
+    link.innerHTML = `${prop.nom_structure}`;
+    if (prop.sigle_structure) {
+        link.innerHTML += `<br /><small class="quiet">${prop.sigle_structure}</small>
+        <br /><small class="quiet">Siege ${prop.adresse_siege}</small>
+        `;
         popup += `<br /><small class="quiet">${prop.crossStreet}</small>`;
     }
 
@@ -448,4 +323,21 @@ locations.eachLayer((locale) => {
             popupAnchor: [0, -34]
         })
     );
-});
+    });
+
+    map.on('idle',function(){
+        map.resize()
+    })
+}
+
+test()
+
+
+
+function getValuse(data){
+    a = data
+    console.log(data)
+}
+
+
+

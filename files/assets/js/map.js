@@ -225,46 +225,37 @@ let data = [
 
 const a = [{
     'type': 'FeatureCollection',
-    'features': [{
-        'type': 'Feature',
-        'geometry': {
-            'type': 'Point',
-            'coordinates': [-77.10853099823, 38.880100922392]
-        },
-        'properties': {
-            "id": 1,
-            "sigle_structure": null,
-            "nom_structure": "Herphie Service",
-            "interlocuteur_structure": "Alexandre HERLOUNE",
-            "poste_interlocuteur": "Responsable",
-            "email_interlocuteur": "herlounealexandre746@gmail.com ",
-            "adresse_siege": "Résidence Novapark 3 - Bât. J - 97300 Cayenne",
-            "tel_interlocuteur": "0694917737",
-            "website_structure": null,
-            "social_media_structure": null,
-            "statut_juridique_structure": 5,
-            "effectif": 1,
-            "description_structure": "<p>Service &agrave; la personne consistant &agrave; l'aide au quotidien de familles en situation de fragilit&eacute;</p>",
-            "logo_structure": null,
-            "membre_cress": true,
-            "adherent_cress": true,
-            "partner_cress": true,
-            "domaine_activite_structure": [
-                1,
-                2
-            ],
-            "epci_structure": [
-                1
-            ],
-            "volet_intervention_structure": [
-                1
-            ],
-            "commune_intervention_structure": [
-                1
-            ]
-        }
-    }]
+    'features': []
 }];
+
+$(document).ready(function () {
+    $.ajax({
+        url: 'http://137.74.196.180:8055/items/fiches_entreprises/',
+        type: 'GET',
+        success: function (data) {
+            // data = JSON.parse(data)
+            console.log(data)
+            data = data.data
+
+            data.forEach(item => {
+                a.feature.push(
+                    {
+                        'type': 'Feature',
+                        'geometry': {
+                            'type': 'Point',
+                            'coordinates': [-77.10853099823, 38.880100922392]
+                        },
+                        'properties': item
+                    }  
+                )
+            });
+        }
+    })
+
+    // console.log(a)
+})
+
+
 
 
 

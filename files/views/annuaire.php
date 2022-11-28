@@ -292,12 +292,12 @@
                                 </div>
                             </div>
                             <div class="event-page__content">
-                                <h3 class="event-page__title"><a href="http://127.0.0.1/CRESS-webproject/files/structure.php?id=<?php echo $structure['id'] ; ?>"><?php echo $structure['nom_structure'] ; ?></a></h3>
+                                <h3 class="event-page__title"><a href="/structure?id=<?php echo $structure['id'] ; ?>"><?php echo $structure['nom_structure'] ; ?></a></h3>
                                 <ul class="event-page__meta-box list-unstyled">
                                     <li><i class="far fa-clock"></i>04:00 am / 06:00 am</li>
                                     <li><i class="far fa-map"></i>66 broklyn Street, New York</li>
                                 </ul>
-                                <a href="http://127.0.0.1/CRESS-webproject/files/structure.php?id=<?php echo $structure['id'] ; ?>" class="thm-btn event-page__btn">Voir plus</a>
+                                <a href="/structure?id=<?php echo $structure['id'] ; ?>" class="thm-btn event-page__btn">Voir plus</a>
                             </div>
                         </div>
                     </div>

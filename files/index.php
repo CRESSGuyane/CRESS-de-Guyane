@@ -29,6 +29,9 @@ switch ($request) {
     case '/annuaire' :
         require __DIR__ . '/views/annuaire.php';
         break;
+    case '/carte' :
+        require __DIR__ . '/views/cartographie_entreprise.php';
+        break;
     
     case '/gouvernance' :
         require __DIR__ . '/views/gouvernance.php';

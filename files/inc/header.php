@@ -120,10 +120,10 @@
                                         <li class="dropdown">
                                             <a href="#">CRESS Guyane</a>
                                             <ul>
-                                                <li><a href="cress-about">Qui sommes-nous ?</a></li>
-                                                <li><a href="campaign-details">Nos missions</a></li>
+                                                <li><a href="cress-about">A propos</a></li>
+                                                <!--<li><a href="campaign-details">Nos missions</a></li>-->
                                                 <li><a href="campaign-details">Nos dispositifs</a></li>
-                                                <li><a href="cress-team">Notre équipe</a></li>
+                                                <li><a href="cress-team">Equipe</a></li>
                                                 <li><a href="campaign-details">Adhésion</a></li>
                                             </ul><!-- /.sub-menu -->
                                         </li>

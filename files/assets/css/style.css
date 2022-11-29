@@ -8062,7 +8062,7 @@ section {
 }
 
 /*--------------------------------------------------------------
-# ESS Gouvernance Page
+# ESS France Page
 --------------------------------------------------------------*/
 
 img.align-center, figure.align-center {
@@ -8071,4 +8071,60 @@ img.align-center, figure.align-center {
     transform: translateX(-50%);
     margin-left: 0;
     margin-right: 0;
+}
+
+.en-savoir-plus {
+    display: flex;
+    justify-content: center;
+}
+
+
+/*--------------------------------------------------------------
+# CRESS Dispositifs Page
+--------------------------------------------------------------*/
+
+.en-bref-dispositifs {
+    padding-top: 100px;
+}
+    
+/*--------------------------------------------------------------
+# Documentation Page
+--------------------------------------------------------------*/
+.documentation-text{
+    padding-top: 100px;
+}
+
+.download-two{
+    padding-top: 100px;
+}
+
+.container-doc-button{
+    text-align: center;
+}
+
+.button-docs {
+    background-color: #064888;
+  border: none;
+  color: white;
+  padding: 10px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 15px 2px;
+  cursor: pointer;
+}
+
+
+/*--------------------------------------------------------------
+# Blog Page
+--------------------------------------------------------------*/
+.blog-coming-soon {
+    font-size : 24px;
+    font-family: var(--thm-font-shadows);
+    line-height: 30px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    color: #141c6c;
 }

@@ -284,29 +284,49 @@ async function test() {
     link.className = 'title';
 
     link.innerHTML = `${prop.nom_structure}`;
-    if (prop.sigle_structure) {
-        link.innerHTML += `
-        <br /><small class="badge badge-primary quiet">${prop.statut_juridique_structure.statut}</small>
-        `;
-        popup += `<br /><small class="quiet">${prop.nom_structure} dfgdf</small>`;
-    }
+    
 
-    if (prop.sigle_structure) {
-        // link.innerHTML += `
-        // <br /><small class="badge badge-primary quiet">${prop.statut_juridique_structure.statut}</small>
-        // `;
-    }
+    
 
     const details = listing.appendChild(document.createElement('div'));
-    details.innerHTML = `${prop.city}`;
-    if (prop.phone) {
-        details.innerHTML += ` Site web: ${prop.website_structure}`;
-    }
 
-    details.innerHTML = `${prop.city}`;
-    if (prop.phone) {
-        details.innerHTML += ` &middot; sdfsd ${prop.phoneFormatted}`;
-    }
+    let element_annuaire_details = '<div>'
+
+        element_annuaire_details = '<div class="border border-danger my-2">';
+        if (prop.adresse_siege) {
+            link.innerHTML += `
+                <br /><small class="quiet"><i class="fa fa-map-marker-alt"></i> ${prop.adresse_siege}</small>
+            `;
+        }
+            if (prop.sigle_structure) {
+                link.innerHTML += `
+                <br /><small class="badge badge-primary quiet">${prop.statut_juridique_structure.statut}</small>
+                `;
+                popup += `<br /><small class="quiet">${prop.nom_structure}</small>`;
+            }
+        element_annuaire_details += '</div>';
+
+        element_annuaire_details = '<div class="border border-light my-2 d-flex flex-row justify-content-between align-items-center">';
+            if (prop.website_structure) {
+                element_annuaire_details += `
+                    <a class="py-0 px-2 btn btn-sm btn-outline-secondary" href="${prop.website_structure}"><i class="fa fa-globe"></i> Site web</a>
+                `;
+            }
+
+            if (prop.sigle_structure) {
+                element_annuaire_details += `<small class="badge badge-danger quiet">${prop.effectif.effectif} employé(s)</small>
+                `;
+            }
+        element_annuaire_details += '</div>';
+    element_annuaire_details += '</div>';
+
+
+    details.innerHTML = element_annuaire_details
+
+    // details.innerHTML = `${prop.city}`;
+    // if (prop.phone) {
+    //     details.innerHTML += ` &middot; sdfsd ${prop.phoneFormatted}`;
+    // }
 
     link.onclick = function() {
         setActive(listing);

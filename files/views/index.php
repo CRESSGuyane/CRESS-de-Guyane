@@ -100,7 +100,7 @@
                                 <div class="feature-one__icon-wrap">
                                     
                                     <div class="feature-one__icon-box">
-                                        <span class="icon-Picto-CRESS_5-1_Promotion-corporate"></span>
+                                        <span class="icon-representer-bleu"></span>
                                         
                                         <div class="feature-one__icon-box-img">
                                             <img src="assets/images/resources/three_iocn_box_bg.png" alt="">
@@ -122,7 +122,7 @@
                                 <div class="feature-one__icon-wrap">
                                     
                                     <div class="feature-one__icon-box">
-                                        <span class="icon-Picto-CRESS_5-1_Promotion-corporate"></span>
+                                        <span class="icon-picto-accompagner-svg"></span>
                                         
                                         <div class="feature-one__icon-box-img">
                                             <img src="assets/images/resources/three_iocn_box_bg.png" alt="">

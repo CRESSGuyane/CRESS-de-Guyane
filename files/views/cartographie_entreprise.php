@@ -73,91 +73,109 @@
     <link rel="stylesheet" href="assets/css/responsive.css">
     <link href='https://api.mapbox.com/mapbox.js/v3.2.1/mapbox.css' rel='stylesheet' />
     <style>
-  * {
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: 'Rubik', sans-serif;
-    color: #404040;
-    /* font: 400 15px/22px 'Source Sans Pro', 'Helvetica Neue', sans-serif; */
-    margin: 0;
-    padding: 0;
-    -webkit-font-smoothing: antialiased;
-  }
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Rubik', sans-serif;
+            color: #404040;
+            /* font: 400 15px/22px 'Source Sans Pro', 'Helvetica Neue', sans-serif; */
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
 
-  html, body {
-    height: 100%;
-}
+        html, body {
+            height: 100%;
+        }
 
-  h1 {
-    font-size: 22px;
-    margin: 0;
-    font-weight: 400;
-    line-height: 20px;
-    padding: 20px 2px;
-  }
+        h1 {
+            font-size: 22px;
+            margin: 0;
+            font-weight: 400;
+            line-height: 20px;
+            padding: 20px 2px;
+        }
 
-  a {
-    color: #404040;
-    text-decoration: none;
-  }
+        a {
+            color: #404040;
+            text-decoration: none;
+        }
 
-  a:hover {
-    color: #101010;
-  }
+        a:hover {
+            color: #101010;
+        }
 
-  /* The page is split between map and sidebar - the sidebar gets 1/3, map
-  gets 2/3 of the page. You can adjust this to your personal liking. */
-  .sidebar {
-    position: absolute;
-    width: 33.3333%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    overflow: hidden;
-    border-right: 1px solid rgba(0, 0, 0, 0.25);
-  }
+        /* The page is split between map and sidebar - the sidebar gets 1/3, map
+        gets 2/3 of the page. You can adjust this to your personal liking. */
+        .sidebar {
+            position: absolute;
+            width: 33.3333%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            border-right: 1px solid rgba(0, 0, 0, 0.25);
+        }
 
-  .map {
-    position: absolute;
-    left: 33.3333%;
-    width: 66.6666%;
-    top: 0;
-    bottom: 0;
-  }
+        .map {
+            position: absolute;
+            left: 33.3333%;
+            width: 66.6666%;
+            top: 0;
+            bottom: 0;
+        }
 
-  #map{
+        #map{
 
-  }
+        }
 
-  .heading {
-    background: #fff;
-    border-bottom: 1px solid #eee;
-    height: 60px;
-    line-height: 60px;
-    padding: 0 10px;
-  }
+        .heading {
+            background: #fff;
+            border-bottom: 1px solid #eee;
+            height: 60px;
+            line-height: 60px;
+            padding: 0 10px;
+        }
 
 
-  .map-info{
-    height: 320px;
-  }
-  
-  .item{
-    border: 1px solid #cbcbcb59;
-    padding: 15px;
-    margin: 15px;
-    border-radius: 6px;
-    background-color: white;
-    box-shadow: 0px 4px 12px -3px #363636ab;
-  }
+        .map-info{
+            height: 320px;
+            z-index: 1;
+        }
 
-  .listings-container{
-    height: 519px;
-    overflow-x: scroll;
-  }
-</style>  
+        .overlay{
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 1000;
+        }
+
+        .overlay > div{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .item{
+            border: 1px solid #cbcbcb59;
+            padding: 15px;
+            margin: 15px;
+            border-radius: 6px;
+            background-color: white;
+            box-shadow: 0px 4px 12px -3px #363636ab;
+        }
+
+        .listings-container{
+            height: 519px;
+            overflow-x: scroll;
+        }
+    </style>  
 </head>
 
 <body>
@@ -298,7 +316,7 @@
                     <form class="form-group">
                 <div class="form-row align-items-center">
                     <div class="col my-1">
-                        <select class="custom-select" id="inlineFormCustomSelect" name="statut">
+                        <select class="custom-select" id="statut" name="statut">
                             <option selected value="">Statut</option>
                             <?php
                     foreach($listeStatut as $statut) :
@@ -312,7 +330,7 @@
                     </div>
                     <div class="col my-1">
 
-                        <select class="custom-select" id="inlineFormCustomSelect" name="domaine">
+                        <select class="custom-select" id="domaine" name="domaine">
                             <option selected value="">Domaine</option>
                             <?php
                         foreach($listeDomaine as $domaine) :
@@ -323,7 +341,7 @@
                     </div>
                     <div class="col my-1">
 
-                        <select class="custom-select" id="inlineFormCustomSelect" name="communes">
+                        <select class="custom-select" id="commune" name="communes">
                             <option selected value="">Communes</option>
                             <?php
                         foreach($listeCommunes as $communes) :
@@ -343,7 +361,7 @@
                         </div>
                  </div>
                     <div class="col-auto my-1">
-                    <button type="submit" class="btn btn-primary" >Recherche</button>
+                    <button type="button" id="recherche_btn" class="btn btn-primary" >Recherche</button>
                     </div>
                 </div>
         </form>
@@ -353,7 +371,14 @@
         <!--Page Header End-->
 
         <!--Event Page Start-->
-        <section class="event-page">
+        <section class="event-page" id="section_map">
+            <div class="overlay" id="overlay">
+                <div class="text-center text-light">
+                    <div class="spinner-border text-light" role="status">
+                    </div>
+                    <span class="">Chargement...</span>
+                </div>
+            </div>
             <div class="container map-info">
                 <div class='sidebar'>
                     <div class='heading'>
@@ -535,7 +560,6 @@
         </div>
 
     </div>
-
 
     
     <script src="assets/js/jquery.min.js"></script>

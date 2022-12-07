@@ -382,7 +382,7 @@
             <div class="container map-info">
                 <div class='sidebar'>
                     <div class='heading'>
-                        <h1>Structure de l'ESS en Guyane</h1>
+                        <h1>Structures de l'ESS en Guyane</h1>
                     </div>
                     <div class="listings-container">
                         <div id='listings' class='listings'></div>

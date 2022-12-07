@@ -315,10 +315,10 @@ async function test(url) {
                     `;
                 }
 
-                if (prop.sigle_structure) {
-                    element_annuaire_details += `<small class="badge badge-danger quiet">${prop.effectif.effectif} employé(s)</small>
-                    `;
-                }
+                // if (prop.sigle_structure) {
+                //     element_annuaire_details += `<small class="badge badge-danger quiet">${prop.effectif.effectif} employé(s)</small>
+                //     `;
+                // }
             element_annuaire_details += '</div>';
         element_annuaire_details += '</div>';
 
@@ -486,10 +486,10 @@ async function test_2() {
                     `;
                 }
 
-                if (prop.effectif) {
-                    element_annuaire_details += `<small class="badge badge-danger quiet">${prop.effectif.effectif} employé(s)</small>
-                    `;
-                }
+                // if (prop.effectif) {
+                //     element_annuaire_details += `<small class="badge badge-danger quiet">${prop.effectif.effectif} employé(s)</small>
+                //     `;
+                // }
             element_annuaire_details += '</div>';
         element_annuaire_details += '</div>';
 
@@ -675,10 +675,10 @@ async function test_2() {
                         `;
                     }
     
-                    if (prop.sigle_structure) {
-                        element_annuaire_details += `<small class="badge badge-danger quiet">${prop.effectif.effectif} employé(s)</small>
-                        `;
-                    }
+                    // if (prop.sigle_structure) {
+                    //     element_annuaire_details += `<small class="badge badge-danger quiet">${prop.effectif.effectif} employé(s)</small>
+                    //     `;
+                    // }
                 element_annuaire_details += '</div>';
             element_annuaire_details += '</div>';
     

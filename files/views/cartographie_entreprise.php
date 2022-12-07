@@ -304,7 +304,7 @@
         </div>
 
         <!--Page Header Start-->
-        <section class="page-header" style="background-image: url(assets/images/backgrounds/page-header-bg.jpg);">
+        <section class="page-header" style="background-image: url(assets/images/backgrounds/events-page-header-bg-1894x370.png);">
             <div class="container">
                 <div class="page-header__inner">
                     <h2>Annuaire</h2>

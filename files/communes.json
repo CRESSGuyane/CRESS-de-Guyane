@@ -1,0 +1,92 @@
+{
+    "data": [
+        {
+            "id": 1,
+            "commune": "Apatou"
+        },
+        {
+            "id": 2,
+            "commune": "Awala-Yalimapo"
+        },
+        {
+            "id": 3,
+            "commune": "Camopi"
+        },
+        {
+            "id": 4,
+            "commune": "Cayenne"
+        },
+        {
+            "id": 5,
+            "commune": "Grand-Santi"
+        },
+        {
+            "id": 6,
+            "commune": "Iracoubo"
+        },
+        {
+            "id": 7,
+            "commune": "Kourou"
+        },
+        {
+            "id": 8,
+            "commune": "Macouria"
+        },
+        {
+            "id": 9,
+            "commune": "Mana"
+        },
+        {
+            "id": 10,
+            "commune": "Maripasoula"
+        },
+        {
+            "id": 11,
+            "commune": "Matoury"
+        },
+        {
+            "id": 12,
+            "commune": "Montsinéry-Tonnégrande"
+        },
+        {
+            "id": 13,
+            "commune": "Ouanary"
+        },
+        {
+            "id": 14,
+            "commune": "Papaïchton"
+        },
+        {
+            "id": 15,
+            "commune": "Régina"
+        },
+        {
+            "id": 16,
+            "commune": "Rémire-Montjoly"
+        },
+        {
+            "id": 17,
+            "commune": "Roura"
+        },
+        {
+            "id": 18,
+            "commune": "Saint-Elie"
+        },
+        {
+            "id": 19,
+            "commune": "Saint-Georges"
+        },
+        {
+            "id": 20,
+            "commune": "Saint-Laurent"
+        },
+        {
+            "id": 21,
+            "commune": "Saül"
+        },
+        {
+            "id": 22,
+            "commune": "Sinnamary"
+        }
+    ]
+}

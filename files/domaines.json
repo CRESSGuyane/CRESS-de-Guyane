@@ -1,0 +1,68 @@
+{
+    "data": [
+        {
+            "id": 1,
+            "domaine": "Action sociale"
+        },
+        {
+            "id": 2,
+            "domaine": "Activités financières et d'assurance"
+        },
+        {
+            "id": 3,
+            "domaine": "Agriculture, espaces verts"
+        },
+        {
+            "id": 4,
+            "domaine": "Commerce, consommation éthique et équitable"
+        },
+        {
+            "id": 5,
+            "domaine": "Economie circulaire"
+        },
+        {
+            "id": 6,
+            "domaine": "Enseignement, éducation, formation"
+        },
+        {
+            "id": 7,
+            "domaine": "Hébergement, restauration"
+        },
+        {
+            "id": 8,
+            "domaine": "Industrie, construction"
+        },
+        {
+            "id": 9,
+            "domaine": "Numérique, TIC"
+        },
+        {
+            "id": 10,
+            "domaine": "Protection de l'environnement"
+        },
+        {
+            "id": 11,
+            "domaine": "Santé"
+        },
+        {
+            "id": 12,
+            "domaine": "Services aux entreprises"
+        },
+        {
+            "id": 13,
+            "domaine": "Services à la personne"
+        },
+        {
+            "id": 14,
+            "domaine": "Sports & activités de loisirs"
+        },
+        {
+            "id": 15,
+            "domaine": "Autre"
+        },
+        {
+            "id": 16,
+            "domaine": "Insertion, réinsertion"
+        }
+    ]
+}

@@ -21,21 +21,6 @@
         $seleted = "selected";
        
     }
-    
-    $ch = curl_init();
-    $headers = array(
-        'Accept: application/json',
-        'Content-Type: application/json',
-
-    );
-    curl_setopt($ch, CURLOPT_URL, "http://137.74.196.180:8055/items/fiches_entreprises/?fields=*,*.*.*&filter[coordonnees][_ncontains]=null");
-    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-
-    $response = curl_exec($ch);
-
-    curl_close($ch);
-
-    var_dump($response);
 ?>
 
 <!DOCTYPE html>
@@ -88,114 +73,94 @@
     <link rel="stylesheet" href="assets/css/responsive.css">
     <link href='https://api.mapbox.com/mapbox.js/v3.2.1/mapbox.css' rel='stylesheet' />
     <style>
-        * {
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Rubik', sans-serif;
-            color: #404040;
-            /* font: 400 15px/22px 'Source Sans Pro', 'Helvetica Neue', sans-serif; */
-            margin: 0;
-            padding: 0;
-            -webkit-font-smoothing: antialiased;
-        }
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    color: #404040;
+    font: 400 15px/22px 'Source Sans Pro', 'Helvetica Neue', sans-serif;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+  }
 
-        html, body {
-            height: 100%;
-        }
+  html, body {
+    height: 100%;
+}
 
-        h1 {
-            font-size: 22px;
-            margin: 0;
-            font-weight: 400;
-            line-height: 20px;
-            padding: 20px 2px;
-        }
+  h1 {
+    font-size: 22px;
+    margin: 0;
+    font-weight: 400;
+    line-height: 20px;
+    padding: 20px 2px;
+  }
 
-        a {
-            color: #404040;
-            text-decoration: none;
-        }
+  a {
+    color: #404040;
+    text-decoration: none;
+  }
 
-        a:hover {
-            color: #101010;
-        }
+  a:hover {
+    color: #101010;
+  }
 
-        /* The page is split between map and sidebar - the sidebar gets 1/3, map
-        gets 2/3 of the page. You can adjust this to your personal liking. */
-        .sidebar {
-            position: absolute;
-            width: 33.3333%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            overflow: hidden;
-            border-right: 1px solid rgba(0, 0, 0, 0.25);
-        }
+  /* The page is split between map and sidebar - the sidebar gets 1/3, map
+  gets 2/3 of the page. You can adjust this to your personal liking. */
+  .sidebar {
+    position: absolute;
+    width: 33.3333%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    border-right: 1px solid rgba(0, 0, 0, 0.25);
+  }
 
-        .map {
-            position: absolute;
-            left: 33.3333%;
-            width: 66.6666%;
-            top: 0;
-            bottom: 0;
-        }
+  .map {
+    position: absolute;
+    left: 33.3333%;
+    width: 66.6666%;
+    top: 0;
+    bottom: 0;
+  }
 
-        #map{
+  #map{
 
-        }
+  }
 
-        .heading {
-            background: #fff;
-            border-bottom: 1px solid #eee;
-            height: 60px;
-            line-height: 60px;
-            padding: 0 10px;
-        }
+  .heading {
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    height: 60px;
+    line-height: 60px;
+    padding: 0 10px;
+  }
 
 
-        .map-info{
-            height: 320px;
-            z-index: 1;
-        }
+  .map-info{
+    height: 320px;
+  }
+  
+  .item{
+    border: 1px solid #cbcbcb59;
+    padding: 15px;
+    margin: 15px;
+    border-radius: 6px;
+    background-color: white;
+    box-shadow: 0px 4px 12px -3px #363636ab;
+  }
 
-        .overlay{
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background-color: rgba(0,0,0,0.5);
-            z-index: 1000;
-        }
-
-        .overlay > div{
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-        
-        .item{
-            border: 1px solid #cbcbcb59;
-            padding: 15px;
-            margin: 15px;
-            border-radius: 6px;
-            background-color: white;
-            box-shadow: 0px 4px 12px -3px #363636ab;
-        }
-
-        .listings-container{
-            height: 519px;
-            overflow-x: scroll;
-        }
-    </style>  
+  .listings-container{
+    height: 519px;
+    overflow-x: scroll;
+  }
+</style>  
 </head>
 
 <body>
-
-    <div class="preloader">
+<div class="preloader">
         <img src="assets/images/cressloader.png" class="preloader__image" alt="logo CRESS">
     </div><!-- /.preloader -->
 
@@ -219,7 +184,7 @@
                                         <i class="fas fa-phone-square-alt"></i>
                                     </div>
                                     <div class="text">
-                                        <p><a href="tel:0594 20 76 70">0594 20 76 70</a></p>
+                                        <p><a href="tel:92-666-888-0000">0594 20 76 70</a></p>
                                     </div>
                                 </li>
                                 <li>
@@ -256,42 +221,41 @@
                                         <li class="dropdown">
                                             <a href="#">L'ESS</a>
                                             <ul>
-                                                <li><a href="about.html">C'est quoi ?</a></li>
-                                                <li><a href="volunteer.html">Gouvernance</a></li>
-                                                <li><a href="become-volunteer.html">Cartographie</a></li>
+                                                <li><a href="ess-definition.php">Définition</a></li>
+                                                <li><a href="ess-france.php">ESS France</a></li>
                                             </ul><!-- /.sub-menu --> 
                                         </li>
                                         <li class="dropdown">
-                                            <a href="#">CRESS Guyane</a>
+                                            <a href="#">CRESS de Guyane</a>
                                             <ul>
-                                                <li><a href="cress-about.html">Qui sommes-nous ?</a></li>
-                                                <li><a href="campaign-details.html">Nos missions</a></li>
-                                                <li><a href="campaign-details.html">Nos dispositifs</a></li>
-                                                <li><a href="cress-team.html">Notre équipe</a></li>
-                                                <li><a href="campaign-details.html">Adhésion</a></li>
+                                                <li><a href="cress-about.php">A propos</a></li>
+                                               <!-- <li><a href="campaign-details.html">Nos missions</a></li>-->
+                                                <li><a href="dispositifs-cress.php">Dispositifs</a></li>
+                                                <li><a href="cress-team.php">Equipe</a></li>
+                                                <!--<li><a href="campaign-details.html">Adhésion</a></li>-->
                                             </ul><!-- /.sub-menu -->
                                         </li>
                                         <li class="dropdown">
                                             <a href="#">Ressources</a>
                                             <ul>
-                                                <li><a href="event.html">Outils</a></li>
+                                                <li><a href="documentation.php">Documentation</a></li>
                                                 <li><a href="annuaire.php">Annuaire</a></li>
-                                                <li><a href="event-details.html">Cartographie</a></li>
+                                                <!--<li><a href="event-details.html">Cartographie</a></li>-->
                                             </ul><!-- /.sub-menu -->
                                         </li>
                                         <li class="dropdown">
                                             <a href="#">Actualités</a>
                                             <ul>
-                                                <li><a href="news.html">Evénements</a></li>
-                                                <li><a href="news-details.html">Blog</a></li>
-                                                <li><a href="news-details.html">Appels à projets</a></li>
+                                                <li><a href="events.php">Evènements</a></li>
+                                                <li><a href="blog.php">Blog</a></li>
+                                                <!--<li><a href="news-details.html">Appels à projets</a></li>-->
                                             </ul><!-- /.sub-menu -->
                                         </li>
                                         <li class="dropdown">
-                                            <a href="#">Contact</a>
+                                            <a href="contact.php">Contact</a>
                                             <ul>
-                                                <li><a href="contact.html">Formulaire</a></li>
-                                                <li><a href="news-details.html">Numéros utiles</a></li>
+                                                <!--<li><a href="contact.html">Formulaire</a></li>-->
+                                                <!--<li><a href="news-details.html">Numéros utiles</a></li>-->
                                             </ul><!-- /.sub-menu -->
                                         </li>
                                     </ul>
@@ -299,7 +263,7 @@
                             </div>
                             <div class="main-nav__right main-nav__right-one float-right">
                                 <div class="main-nav__right__btn-one">
-                                    <a href="https://forms.office.com/pages/responsepage.aspx?id=lwE60sUzf0Ou_MMX03b1svQYg2EOyrdPkJUfDw0AiPNUMkdSVkFBRkhTNVBOS1BCNVYyVjZGNzlZNi4u&fbclid=IwAR3Fcr5WYNCjMHtk-mmHUpOzRpf06VKhbmyHRPkmzGCk-B6-9zd-BM81ztI"><i class="fas fa-handshake"></i>Adhérez</a>
+                                    <a href="https://forms.office.com/pages/responsepage.aspx?id=lwE60sUzf0Ou_MMX03b1svQYg2EOyrdPkJUfDw0AiPNUMkdSVkFBRkhTNVBOS1BCNVYyVjZGNzlZNi4u&fbclid=IwAR3Fcr5WYNCjMHtk-mmHUpOzRpf06VKhbmyHRPkmzGCk-B6-9zd-BM81ztI" target="_blank"><i class="fas fa-handshake"></i>Adhérez</a>
                                 </div>
                                 <!--<div class="main-nav__right__icon-cart-box">
                                     <a href="#">
@@ -326,12 +290,12 @@
                     <ul class="thm-breadcrumb list-unstyled">
                         <li><a href="index.php">Accueil</a></li>
                         <li><span>/</span></li>
-                        <li>Annauire</li>
+                        <li>Annuaire</li>
                     </ul>
                     <form class="form-group">
                 <div class="form-row align-items-center">
                     <div class="col my-1">
-                        <select class="custom-select" id="statut" name="statut">
+                        <select class="custom-select" id="inlineFormCustomSelect" name="statut">
                             <option selected value="">Statut</option>
                             <?php
                     foreach($listeStatut as $statut) :
@@ -345,7 +309,7 @@
                     </div>
                     <div class="col my-1">
 
-                        <select class="custom-select" id="domaine" name="domaine">
+                        <select class="custom-select" id="inlineFormCustomSelect" name="domaine">
                             <option selected value="">Domaine</option>
                             <?php
                         foreach($listeDomaine as $domaine) :
@@ -356,7 +320,7 @@
                     </div>
                     <div class="col my-1">
 
-                        <select class="custom-select" id="commune" name="communes">
+                        <select class="custom-select" id="inlineFormCustomSelect" name="communes">
                             <option selected value="">Communes</option>
                             <?php
                         foreach($listeCommunes as $communes) :
@@ -376,7 +340,7 @@
                         </div>
                  </div>
                     <div class="col-auto my-1">
-                    <button type="button" id="recherche_btn" class="btn btn-primary" >Recherche</button>
+                    <button type="submit" class="btn btn-primary" >Recherche</button>
                     </div>
                 </div>
         </form>
@@ -386,14 +350,7 @@
         <!--Page Header End-->
 
         <!--Event Page Start-->
-        <section class="event-page" id="section_map">
-            <div class="overlay" id="overlay">
-                <div class="text-center text-light">
-                    <div class="spinner-border text-light" role="status">
-                    </div>
-                    <span class="">Chargement...</span>
-                </div>
-            </div>
+        <section class="event-page">
             <div class="container map-info">
                 <div class='sidebar'>
                     <div class='heading'>
@@ -411,88 +368,87 @@
         <!--Event Page End-->
 
        <!--Site Footer One Start-->
-        <footer class="site-footer" style="background-image: url(assets/images/backgrounds/cress-site_footer_bg.png)">
-
-        <div class="container">
-            <div class="site-footer__one-top">
-                <div class="row">
-                    <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="00ms">
-                        <div class="footer-widget__column footer-widget__about">
-                            <div class="footer-widget__logo">
-                                <a href="index.html"><img src="assets/images/resources/logo cress blanc.png" alt="logo CRESS Guyane en pied de page"></a>
+       <footer class="site-footer" style="background-image: url(assets/images/backgrounds/cress-site_footer_bg.png)">
+            <div class="container">
+                <div class="site-footer__one-top">
+                    <div class="row">
+                        <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="00ms">
+                            <div class="footer-widget__column footer-widget__about">
+                                <div class="footer-widget__logo">
+                                    <a href="index.html"><img src="assets/images/resources/logo cress blanc.png" alt="logo CRESS Guyane en pied de page"></a>
+                                </div>
+                                <p class="footer-widget__text">Suivez-nous sur les réseaux sociaux et recevez les
+                                   dernières actualités de l'ESS en Guyane.</p>
+                                <div class="site-footer__social">
+                                    <a href="https://twitter.com/CRESSGuyane" target><i class="fab fa-twitter"></i></a>
+                                    <a href="https://www.facebook.com/cressguyane" class="clr-fb"><i class="fab fa-facebook-square"></i></a>
+                                    <a href="https://www.linkedin.com/company/cress-guyane/" class="clr-dri"><i class="fab fa-linkedin"></i></a>
+                                    <a href="https://www.instagram.com/cressdeguyane/" class="clr-ins"><i class="fab fa-instagram"></i></a>
+                                </div>
                             </div>
-                            <p class="footer-widget__text">Suivez-nous sur les réseaux sociaux et recevez les
-                               dernières actualités de l'ESS en Guyane.</p>
-                            <div class="site-footer__social">
-                                <a href="https://twitter.com/CRESSGuyane" target="_blank"><i class="fab fa-twitter"></i></a>
-                                <a href="https://www.facebook.com/cressguyane" target="_blank" class="clr-fb"><i class="fab fa-facebook-square"></i></a>
-                                <a href="https://www.linkedin.com/company/cress-guyane/" target="_blank" class="clr-dri"><i class="fab fa-linkedin"></i></a>
-                                <a href="https://www.instagram.com/cressdeguyane/" target="_blank" class="clr-ins"><i class="fab fa-instagram"></i></a>
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="200ms">
+                            <div class="footer-widget__column footer-widget__explore clearfix">
+                                <h3 class="footer-widget__title">Menu</h3>
+                                <ul class="footer-widget__explore-list list-unstyled">
+                                    <li><a href="ess-definition.html">L'ESS</a></li>
+                                    <li><a href="ess-france.html">ESS Fr</a></li>
+                                    <li><a href="cress-about-ok.html">CRESS</a></li>
+                                    <li><a href="events.html">Actualités</a></li>
+                                    <li><a href="dispositifs-cress.html">Dispositifs</a></li>
+                                </ul>
+                                <ul class="footer-widget__explore-list footer-widget__explore-list-two list-unstyled">
+                                    <li><a href="documentation.html">Documentation</a></li>
+                                    <li><a href="annuaire.php">Annuaire</a></li>
+                                    <li><a href="blog.html">Blog</a></li>
+                                    <li><a href="contact.html">Contact</a></li>
+                                </ul>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="200ms">
-                        <div class="footer-widget__column footer-widget__explore clearfix">
-                            <h3 class="footer-widget__title">Menu</h3>
-                            <ul class="footer-widget__explore-list list-unstyled">
-                                <li><a href="#">Donate</a></li>
-                                <li><a href="#">Campaigns</a></li>
-                                <li><a href="#">Fundraise</a></li>
-                                <li><a href="#">Porteurs</a></li>
-                                <li><a href="#">Partenaires</a></li>
-                            </ul>
-                            <ul class="footer-widget__explore-list footer-widget__explore-list-two list-unstyled">
-                                <li><a href="#">Fundraising</a></li>
-                                <li><a href="#">Contact</a></li>
-                                <li><a href="#">Help</a></li>
-                                <li><a href="#">Faqs</a></li>
-                            </ul>
+                        <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="300ms">
+                            <div class="footer-widget__column footer-widget__contact">
+                                <h3 class="footer-widget__title">Contact</h3>
+                                <ul class="list-unstyled footer-widget__contact-list">
+                                    <li>
+                                        <div class="icon">
+                                            <i class="fas fa-phone-square-alt"></i>
+                                        </div>
+                                        <div class="text">
+                                            <p><a href="tel:0594207670">0594 20 76 70</a></p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="icon">
+                                            <i class="fas fa-envelope"></i>
+                                        </div>
+                                        <div class="text">
+                                            <p><a href="mailto:contact@cress-guyane.org">contact@cress-guyane.org</a></p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="icon">
+                                            <i class="fas fa-map-marker-alt"></i>
+                                        </div>
+                                        <div class="text">
+                                            <p>10, rue des Remparts <br>97300 CAYENNE</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="300ms">
-                        <div class="footer-widget__column footer-widget__contact">
-                            <h3 class="footer-widget__title">Contact</h3>
-                            <ul class="list-unstyled footer-widget__contact-list">
-                                <li>
-                                    <div class="icon">
-                                        <i class="fas fa-phone-square-alt"></i>
-                                    </div>
-                                    <div class="text">
-                                        <p><a href="tel:0594207670">0594 20 76 70</a></p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <i class="fas fa-envelope"></i>
-                                    </div>
-                                    <div class="text">
-                                        <p><a href="mailto:contact@cress-guyane.org">contact@cress-guyane.org</a></p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <i class="fas fa-map-marker-alt"></i>
-                                    </div>
-                                    <div class="text">
-                                        <p>10, rue des Remparts <br>97300 CAYENNE</p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="400ms">
-                        <div class="footer-widget__column footer-widget__support">
-                            <h3 class="footer-widget__title">Devenez membre</h3>
-                            <p class="footer-widget__support-text">Bénéficiez d'une représentation
-                                auprès des partenaires institutionnels grâce aux actions de plaidoyer menées.</p>
-                            <div class="footer-widget__support-btn">
-                                <a href="https://forms.office.com/pages/responsepage.aspx?id=lwE60sUzf0Ou_MMX03b1svQYg2EOyrdPkJUfDw0AiPNUMkdSVkFBRkhTNVBOS1BCNVYyVjZGNzlZNi4u&fbclid=IwAR3Fcr5WYNCjMHtk-mmHUpOzRpf06VKhbmyHRPkmzGCk-B6-9zd-BM81ztI" target="_blank"><i class="fas fa-handshake"></i>Adhérez</a>
+                        <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="400ms">
+                            <div class="footer-widget__column footer-widget__support">
+                                <h3 class="footer-widget__title">Devenez membre</h3>
+                                <p class="footer-widget__support-text">Bénéficiez d'une représentation
+                                    auprès des partenaires institutionnels grâce aux actions de plaidoyer menées.</p>
+                                <div class="footer-widget__support-btn">
+                                    <a href="https://forms.office.com/pages/responsepage.aspx?id=lwE60sUzf0Ou_MMX03b1svQYg2EOyrdPkJUfDw0AiPNUMkdSVkFBRkhTNVBOS1BCNVYyVjZGNzlZNi4u&fbclid=IwAR3Fcr5WYNCjMHtk-mmHUpOzRpf06VKhbmyHRPkmzGCk-B6-9zd-BM81ztI" target="_blank"><i class="fas fa-handshake"></i>Adhérez</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
         </footer>
         <!--Site Footer One End-->
 
@@ -503,7 +459,7 @@
                     <div class="col-xl-12">
                         <div class="site-footer-bottom__inner">
                             <div class="site-footer-bottom__left">
-                                <p>© 2022 CRESS-Guyane. Tous droits réservés - Conçu avec <i class="fa fa-heart text-danger"></i> par Anansi Writes & Andréna Solution<!--<a href="http://www.anansi-writes.com/">Anansi Writes--></a></p>
+                                <p>© 2022 CRESS-Guyane. Tous droits réservés - Conçu avec <i class="fa fa-heart text-danger"></i> par <a href="https://www.malt.fr/profile/jeanphilippeandrena">Andréna Solution</a> & <a href="http://www.anansi-writes.com/">Anansi Writes</a></p>
                             </div>
                             <ul class="site-footer-bottom__menu list-unstyled">
                                 <li><a href="#">Politique de confidentialité</a></li>
@@ -517,63 +473,64 @@
         </div>
         <!--Site Footer Bottom End-->
 
-        </div><!-- /.page-wrapper -->
-
-        <a href="#" data-target="html" class="scroll-to-target scroll-to-top"><i class="fa fa-angle-up"></i></a>
 
 
 
+    </div><!-- /.page-wrapper -->
 
-        <div class="mobile-nav__wrapper">
-            <div class="mobile-nav__overlay side-menu__toggler mobile-nav__toggler"></div>
-            <div class="mobile-nav__content">
-                <span class="mobile-nav__close side-menu__toggler mobile-nav__toggler">
-                    <i class="fa fa-times"></i>
-                </span>
-                <div class="logo-box">
-                    <a href="index.html" aria-label="logo image">
-                        <img src="assets/images/resources/logo-2.png" alt="" />
-                    </a>
-                </div>
-                <!-- /.logo-box -->
-                <div class="mobile-nav__container clearfix"></div>
-                <!-- /.mobile-nav__container -->
-                <ul class="mobile-nav__contact list-unstyled">
-                    <li>
-                        <i class="fas fa-envelope"></i>
-                        <a href="mailto:contact@cress-guyane.org">contact@cress-guyane.org</a>
-                    </li>
-                    <li>
-                        <i class="fas fa-phone-square-alt"></i>
-                        <a href="tel:0594 20 76 70">0594 20 76 70</a>
-                    </li>
-                </ul><!-- /.mobile-nav__contact -->
-                <div class="mobile-nav__top">
-                    <div class="mobile-nav__social">
-                        <a href="#" aria-label="twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" aria-label="facebook"><i class="fab fa-facebook-square"></i></a>
-                        <a href="#" aria-label="pinterest"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" aria-label="instagram"><i class="fab fa-instagram"></i></a>
-                    </div><!-- /.mobile-nav__social -->
-                </div><!-- /.mobile-nav__top -->
+    <a href="#" data-target="html" class="scroll-to-target scroll-to-top"><i class="fa fa-angle-up"></i></a>
+
+
+
+
+    <div class="mobile-nav__wrapper">
+        <div class="mobile-nav__overlay side-menu__toggler mobile-nav__toggler"></div>
+        <div class="mobile-nav__content">
+            <span class="mobile-nav__close side-menu__toggler mobile-nav__toggler">
+                <i class="fa fa-times"></i>
+            </span>
+            <div class="logo-box">
+                <a href="index.html" aria-label="logo image">
+                    <img src="assets/images/resources/logo-2.png" alt=""/>
+                </a>
             </div>
+            <!-- /.logo-box -->
+            <div class="mobile-nav__container clearfix"></div>
+            <!-- /.mobile-nav__container -->
+            <ul class="mobile-nav__contact list-unstyled">
+                <li>
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:needhelp@asting.com">needhelp@asting.com</a>
+                </li>
+                <li>
+                    <i class="fas fa-phone-square-alt"></i>
+                    <a href="tel:666-888-0000">666 888 0000</a>
+                </li>
+            </ul><!-- /.mobile-nav__contact -->
+            <div class="mobile-nav__top">
+                <div class="mobile-nav__social">
+                    <a href="#" aria-label="twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="facebook"><i class="fab fa-facebook-square"></i></a>
+                    <a href="#" aria-label="pinterest"><i class="fab fa-pinterest-p"></i></a>
+                    <a href="#" aria-label="instagram"><i class="fab fa-instagram"></i></a>
+                </div><!-- /.mobile-nav__social -->
+            </div><!-- /.mobile-nav__top -->
         </div>
+    </div>
 
 
 
-        <div class="search-popup">
-            <div class="search-popup__overlay custom-cursor__overlay">
-                <div class="cursor"></div>
-                <div class="cursor-follower"></div>
-            </div><!-- /.search-popup__overlay -->
-            <div class="search-popup__inner">
-                <form action="#" class="search-popup__form">
-                    <input type="text" name="search" placeholder="Tapez pour rechercher...">
-                    <button type="submit"><i class="fa fa-search"></i></button>
-                </form>
-            </div>
+    <div class="search-popup">
+        <div class="search-popup__overlay custom-cursor__overlay">
+            <div class="cursor"></div>
+            <div class="cursor-follower"></div>
+        </div><!-- /.search-popup__overlay -->
+        <div class="search-popup__inner">
+            <form action="#" class="search-popup__form">
+                <input type="text" name="search" placeholder="Type here to Search....">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
         </div>
-
     </div>
 
     

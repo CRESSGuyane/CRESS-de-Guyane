@@ -1,0 +1,24 @@
+{
+    "data": [
+        {
+            "id": 1,
+            "statut": "Association"
+        },
+        {
+            "id": 2,
+            "statut": "Coopérative"
+        },
+        {
+            "id": 3,
+            "statut": "Mutuelle"
+        },
+        {
+            "id": 4,
+            "statut": "Fondation"
+        },
+        {
+            "id": 5,
+            "statut": "Société commerciale d'utilité sociale"
+        }
+    ]
+}

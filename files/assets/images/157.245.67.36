@@ -1,0 +1,7 @@
+<VirtualHost *:443>
+    ServerName 157.245.67.36
+    DocumentRoot /var/www/ssl-test
+    SSLEngine on
+    SSLCertificateFile /etc/pki/tls/certs/apache-selfsigned.crt
+    SSLCertificateKeyFile /etc/pki/tls/private/apache-selfsigned.key
+</VirtualHost>

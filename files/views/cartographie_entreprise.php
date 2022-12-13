@@ -1,8 +1,14 @@
 <?php 
     require_once('./Actions/services.php');
+
+
+    $statuts = json_decode(file_get_contents("statuts.json"))->data;
+    $domaines = json_decode(file_get_contents("domaines.json"))->data;
+    $communes = json_decode(file_get_contents("communes.json"))->data;
     
-    $listeDomaine = getDomaines();
-    $listeStatut = getStatuts();
+    $listeDomaine = $domaines;
+    $listeStatut = $statuts;
+    $listeCommunes = $communes;
     $filtreDomaine= "";
     $filtreRecherche="";
     $filtreCommunes="";
@@ -21,6 +27,21 @@
         $seleted = "selected";
        
     }
+    
+    // $ch = curl_init();
+    // $headers = array(
+    //     'Accept: application/json',
+    //     'Content-Type: application/json',
+
+    // );
+    // curl_setopt($ch, CURLOPT_URL, "http://137.74.196.180:8055/items/fiches_entreprises/?fields=*,*.*.*&filter[coordonnees][_ncontains]=null");
+    // curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+    // $response = curl_exec($ch);
+
+    // curl_close($ch);
+
+    // var_dump($response);
 ?>
 
 <!DOCTYPE html>
@@ -180,6 +201,8 @@
 
 <body>
 
+<!-- <script type="text/javascript" src="entrpriseliste.json"></script> -->
+
     <div class="preloader">
         <img src="assets/images/cressloader.png" class="preloader__image" alt="logo CRESS">
     </div><!-- /.preloader -->
@@ -319,13 +342,10 @@
                         <select class="custom-select" id="statut" name="statut">
                             <option selected value="">Statut</option>
                             <?php
-                    foreach($listeStatut as $statut) :
-                       
-                     
-                
-                ?>
-                            <option value="<?php echo $statut['id'];?>" <?php  if($statut['id']==$filtreStatut){echo "selected";}?>><?php echo $statut['statut'];?></option>
-                <?php endforeach ?>
+                                foreach($listeStatut as $statut) :
+                            ?>
+                            <option value="<?php echo $statut->id;?>"><?php echo $statut->statut;?></option>
+                            <?php endforeach ?>
                         </select>
                     </div>
                     <div class="col my-1">
@@ -335,7 +355,7 @@
                             <?php
                         foreach($listeDomaine as $domaine) :
                         ?>
-                            <option value="<?php echo $domaine['id'];?>" <?php  if($domaine['id']==$filtreDomaine){echo "selected";}?>> <?php echo $domaine['domaine'];?> </option>
+                            <option value="<?php echo $domaine->id;?>" <?php  if($domaine->id==$filtreDomaine){echo "selected";}?>> <?php echo $domaine->domaine;?> </option>
                         <?php endforeach ?>
                         </select>
                     </div>
@@ -346,7 +366,7 @@
                             <?php
                         foreach($listeCommunes as $communes) :
                         ?>
-                            <option value="<?php echo $communes['id'];?>" <?php  if($communes['id']==$filtreCommunes){echo "selected";}?>> <?php echo $communes['communes'];?> </option>
+                            <option value="<?php echo $communes->id;?>" <?php  if($communes->id==$filtreCommunes){echo "selected";}?>> <?php echo $communes->commune;?> </option>
                         <?php endforeach ?>
                         </select>
                     </div>
